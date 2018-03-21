@@ -57,8 +57,8 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		if (currentData["progress"]["printTime"] == None):
 			currentData["progress"]["printTime"] = currentData["job"]["estimatedPrintTime"]
 
-		currentData["progress"]["printTimeLeftString"] = "No ETL yet"
-		currentData["progress"]["ETA"] = "No ETA yet"
+		currentData["progress"]["printTimeLeftString"] = "No ETL"
+		currentData["progress"]["ETA"] = "No ETA"
 
 		#Add additional data
 		try:
@@ -100,11 +100,11 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 	def get_settings_defaults(self):
 		return dict(
 			messages = [
-				"{completion:.2f}p  complete",
+				"{completion:.2f}%  complete",
 				"ETL {printTimeLeft}",
 				"ETA {ETA}"
 			],
-			eta_strftime = "%H %M %S Day %d",
+			eta_strftime = "%H:%M:%S Day %d",
 			etl_format = "{hours:02d}h{minutes:02d}m{seconds:02d}s",
 			time_to_change = 10
 		)
